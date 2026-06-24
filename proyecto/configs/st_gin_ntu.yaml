@@ -1,0 +1,36 @@
+# Configuración ST-GIN — NTU RGB+D 60 clases
+# Reemplaza GCN con Graph Isomorphism Network (GIN)
+# Unidad 11 del curso: Graph Isomorphism Networks
+
+model:
+  gnn_type: gin
+  in_channels: 3
+  num_class: 60
+  graph_cfg:
+    layout: ntu-rgb+d
+    strategy: spatial
+  edge_importance_weighting: true
+  data_bn: true
+  dropout: 0.5
+  # Parámetros exclusivos de GIN:
+  eps: 0.0         # valor inicial de epsilon
+  train_eps: true  # si true, epsilon es aprendido
+
+training:
+  epochs: 80
+  batch_size: 32
+  optimizer:
+    type: SGD
+    lr: 0.1
+    momentum: 0.9
+    nesterov: true
+    weight_decay: 0.0001
+  lr_scheduler:
+    milestones: [30, 40, 50]
+    gamma: 0.1
+
+dataset:
+  name: ntu60
+  data_dir: ../datos/ntu-rgb+d
+  train_split: xsub_train
+  val_split: xsub_val

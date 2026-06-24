@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Modelos entrenados (pesos, demasiado grandes para git)
+*.pth
+
+# Datos del dataset (>100 GB, no van en git)
+datos/
+*.npy
+*.pkl
+
+# Entornos virtuales
+venv/
+env/
+.env

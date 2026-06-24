@@ -1,0 +1,35 @@
+# Configuración ST-GAT — NTU RGB+D 60 clases
+# Reemplaza GCN con Graph Attention Network (GAT)
+# Unidad 10 del curso: Graph Attention Networks
+
+model:
+  gnn_type: gat
+  in_channels: 3
+  num_class: 60
+  graph_cfg:
+    layout: ntu-rgb+d
+    strategy: spatial
+  edge_importance_weighting: true
+  data_bn: true
+  dropout: 0.5
+  # Parámetro exclusivo de GAT:
+  att_dropout: 0.1   # dropout sobre los pesos de atención
+
+training:
+  epochs: 80
+  batch_size: 32
+  optimizer:
+    type: SGD
+    lr: 0.1
+    momentum: 0.9
+    nesterov: true
+    weight_decay: 0.0001
+  lr_scheduler:
+    milestones: [30, 40, 50]
+    gamma: 0.1
+
+dataset:
+  name: ntu60
+  data_dir: ../datos/ntu-rgb+d
+  train_split: xsub_train
+  val_split: xsub_val
