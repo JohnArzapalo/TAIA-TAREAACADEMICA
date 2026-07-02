@@ -3,8 +3,8 @@ __pycache__/
 *.pyc
 *.pyo
 
-# Modelos entrenados (pesos, demasiado grandes para git)
-*.pth
+# Backups de experimentos anteriores (superseded por batch=8 consistente)
+proyecto/resultados/backup_batch32/
 
 # Datos del dataset (>100 GB, no van en git)
 datos/
